@@ -21,6 +21,11 @@ services:
       - CACHE_STORE=file
       - QUEUE_CONNECTION=sync
       - IAE_ALLOWED_KEY=102022400039
+    volumes:
+      - ./app:/var/www/app
+      - ./config:/var/www/config
+      - ./storage/api-docs:/var/www/storage/api-docs
+      - ./database:/var/www/database
     depends_on:
       mysql_db_service_a:
         condition: service_healthy

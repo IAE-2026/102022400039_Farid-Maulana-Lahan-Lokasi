@@ -16,9 +16,46 @@ class LocationController extends Controller {
         summary: "Melihat daftar lokasi parkir",
         security: [["ApiKeyAuth" => []]],
         responses: [
-            new OA\Response(response: 200, description: "Successful operation"),
-            new OA\Response(response: 401, description: "Unauthorized"),
-            new OA\Response(response: 403, description: "Forbidden")
+            new OA\Response(
+                response: 200,
+                description: "Successful operation",
+                content: new OA\JsonContent(
+                    type: "object",
+                    properties: [
+                        new OA\Property(property: "status", type: "string", example: "success"),
+                        new OA\Property(property: "message", type: "string", example: "Data retrieved successfully"),
+                        new OA\Property(property: "data", type: "array", items: new OA\Items(type: "object")),
+                        new OA\Property(
+                            property: "meta",
+                            type: "object",
+                            properties: [
+                                new OA\Property(property: "service_name", type: "string", example: "Lahan-Lokasi-Service"),
+                                new OA\Property(property: "api_version", type: "string", example: "v1")
+                            ]
+                        )
+                    ]
+                )
+            ),
+            new OA\Response(
+                response: 401,
+                description: "Unauthorized",
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: "status", type: "string", example: "error"),
+                        new OA\Property(property: "message", type: "string", example: "Unauthorized: X-IAE-KEY header is missing")
+                    ]
+                )
+            ),
+            new OA\Response(
+                response: 403,
+                description: "Forbidden",
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: "status", type: "string", example: "error"),
+                        new OA\Property(property: "message", type: "string", example: "Forbidden: Invalid X-IAE-KEY value")
+                    ]
+                )
+            )
         ]
     )]
     public function index() {
@@ -44,8 +81,36 @@ class LocationController extends Controller {
             new OA\Parameter(name: "id", in: "path", required: true, schema: new OA\Schema(type: "string"))
         ],
         responses: [
-            new OA\Response(response: 200, description: "Successful operation"),
-            new OA\Response(response: 404, description: "Resource not found")
+            new OA\Response(
+                response: 200,
+                description: "Successful operation",
+                content: new OA\JsonContent(
+                    type: "object",
+                    properties: [
+                        new OA\Property(property: "status", type: "string", example: "success"),
+                        new OA\Property(property: "message", type: "string", example: "Data retrieved successfully"),
+                        new OA\Property(property: "data", type: "object"),
+                        new OA\Property(
+                            property: "meta",
+                            type: "object",
+                            properties: [
+                                new OA\Property(property: "service_name", type: "string", example: "Lahan-Lokasi-Service"),
+                                new OA\Property(property: "api_version", type: "string", example: "v1")
+                            ]
+                        )
+                    ]
+                )
+            ),
+            new OA\Response(
+                response: 404,
+                description: "Resource not found",
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: "status", type: "string", example: "error"),
+                        new OA\Property(property: "message", type: "string", example: "Resource with ID loc_999 not found")
+                    ]
+                )
+            )
         ]
     )]
     public function show($id) {
@@ -90,8 +155,42 @@ class LocationController extends Controller {
             )
         ),
         responses: [
-            new OA\Response(response: 201, description: "Resource created successfully"),
-            new OA\Response(response: 400, description: "Validation Error")
+            new OA\Response(
+                response: 201,
+                description: "Resource created successfully",
+                content: new OA\JsonContent(
+                    type: "object",
+                    properties: [
+                        new OA\Property(property: "status", type: "string", example: "success"),
+                        new OA\Property(property: "message", type: "string", example: "Location master data created successfully"),
+                        new OA\Property(property: "data", type: "object"),
+                        new OA\Property(
+                            property: "meta",
+                            type: "object",
+                            properties: [
+                                new OA\Property(property: "service_name", type: "string", example: "Lahan-Lokasi-Service"),
+                                new OA\Property(property: "api_version", type: "string", example: "v1")
+                            ]
+                        )
+                    ]
+                )
+            ),
+            new OA\Response(
+                response: 400,
+                description: "Validation Error",
+                content: new OA\JsonContent(
+                    properties: [
+                        new OA\Property(property: "status", type: "string", example: "error"),
+                        new OA\Property(property: "message", type: "string", example: "Validation Error"),
+                        new OA\Property(
+                            property: "errors",
+                            type: "array",
+                            items: new OA\Items(type: "string"),
+                            example: ["The name field is required."]
+                        )
+                    ]
+                )
+            )
         ]
     )]
     public function store(Request $request) {
