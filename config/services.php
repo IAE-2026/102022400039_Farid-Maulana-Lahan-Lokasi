@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'iae' => [
+        'allowed_key' => env('IAE_ALLOWED_KEY', '102022400039'),
+    ],
+
 ];

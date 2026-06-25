@@ -10,7 +10,7 @@ use OpenApi\Attributes as OA;
 class LocationController extends Controller {
     
     #[OA\Get(
-        path: "/locations",
+        path: "/api/v1/locations",
         operationId: "getLocationsList",
         tags: ["Locations"],
         summary: "Melihat daftar lokasi parkir",
@@ -35,7 +35,7 @@ class LocationController extends Controller {
     }
 
     #[OA\Get(
-        path: "/locations/{id}",
+        path: "/api/v1/locations/{id}",
         operationId: "getLocationById",
         tags: ["Locations"],
         summary: "Melihat detail satu lokasi",
@@ -70,7 +70,7 @@ class LocationController extends Controller {
     }
 
     #[OA\Post(
-        path: "/locations",
+        path: "/api/v1/locations",
         operationId: "storeLocation",
         tags: ["Locations"],
         summary: "Menambahkan master data lahan baru",

@@ -20,6 +20,7 @@ services:
       - SESSION_DRIVER=file
       - CACHE_STORE=file
       - QUEUE_CONNECTION=sync
+      - IAE_ALLOWED_KEY=102022400039
     depends_on:
       mysql_db_service_a:
         condition: service_healthy

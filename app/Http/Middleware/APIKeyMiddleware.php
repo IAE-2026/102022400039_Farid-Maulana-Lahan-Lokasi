@@ -18,7 +18,7 @@ class APIKeyMiddleware {
             ], 401);
         }
 
-        if ($apiKey !== env('IAE_ALLOWED_KEY', '102022400039')) {
+        if ($apiKey !== config('services.iae.allowed_key')) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Forbidden: Invalid X-IAE-KEY',
