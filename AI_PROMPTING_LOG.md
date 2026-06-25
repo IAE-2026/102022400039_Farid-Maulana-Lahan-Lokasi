@@ -36,7 +36,7 @@ Mengatasi masalah parser generator dokumen yang melewatkan atau tidak menemukan 
 Menyesuaikan konfigurasi endpoint Swagger agar selaras dengan port default lokal yang sedang aktif di terminal komputer pengguna.
 
 * **Input Prompt:**
-  > "[http://127.0.0.1:8000]. masih yang itu"
+  > "[http://127.0.0.1:3001]. masih yang itu"
 
 ---
 
