@@ -30,10 +30,11 @@ RUN composer require mll-lab/laravel-graphql-playground --no-interaction
 
 RUN mkdir -p /var/www/storage/framework/{cache,sessions,views} \
     && mkdir -p /var/www/storage/logs \
-    && mkdir -p /var/www/bootstrap/cache
+    && mkdir -p /var/www/bootstrap/cache \
+    && touch /var/www/database/database.sqlite
 
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
-RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache /var/www/database
+RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache /var/www/database
 
 EXPOSE 3001
 
