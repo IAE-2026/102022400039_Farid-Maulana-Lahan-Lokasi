@@ -176,7 +176,7 @@ class LocationController extends Controller {
                 )
             ),
             new OA\Response(
-                response: 400,
+                response: 422,
                 description: "Validation Error",
                 content: new OA\JsonContent(
                     properties: [
@@ -208,7 +208,7 @@ class LocationController extends Controller {
                 'status' => 'error',
                 'message' => 'Validation Error',
                 'errors' => $validator->errors()->all()
-            ], 400);
+            ], 422);
         }
 
         $latestId = Location::orderBy('id', 'desc')->first();

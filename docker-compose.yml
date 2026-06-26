@@ -3,7 +3,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: smart-parking-service-a-app
     restart: unless-stopped
     ports:
       - "3001:3001"
@@ -21,11 +20,6 @@ services:
       - CACHE_STORE=file
       - QUEUE_CONNECTION=sync
       - IAE_ALLOWED_KEY=102022400039
-    volumes:
-      - ./app:/var/www/app
-      - ./config:/var/www/config
-      - ./storage/api-docs:/var/www/storage/api-docs
-      - ./database:/var/www/database
     depends_on:
       mysql_db_service_a:
         condition: service_healthy
@@ -34,7 +28,6 @@ services:
 
   mysql_db_service_a:
     image: mysql:8.0
-    container_name: smart-parking-service-a-db
     restart: unless-stopped
     ports:
       - "3306:3306"

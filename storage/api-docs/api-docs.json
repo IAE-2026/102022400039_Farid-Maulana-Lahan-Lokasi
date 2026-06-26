@@ -197,7 +197,7 @@
                             }
                         }
                     },
-                    "400": {
+                    "422": {
                         "description": "Validation Error",
                         "content": {
                             "application/json": {
