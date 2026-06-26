@@ -199,8 +199,8 @@ class LocationController extends Controller {
             'address' => 'required|string',
             'type' => 'required|string',
             'parking_type' => 'required|string',
-            'total_spots' => 'required|integer',
-            'base_rate' => 'required|integer',
+            'total_spots' => 'required|numeric',
+            'base_rate' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {

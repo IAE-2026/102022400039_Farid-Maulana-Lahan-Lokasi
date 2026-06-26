@@ -10,11 +10,11 @@ use OpenApi\Attributes as OA;
     description: "Dokumentasi API Terintegrasi untuk Manajemen Lahan dan Slot Parkir"
 )]
 #[OA\Server(
-    url: "http://127.0.0.1:3001",
+    url: "http://localhost:3001",
     description: "Docker Server"
 )]
 #[OA\Server(
-    url: "http://127.0.0.1:8000",
+    url: "http://localhost:8000",
     description: "Local Development Server"
 )]
 #[OA\SecurityScheme(

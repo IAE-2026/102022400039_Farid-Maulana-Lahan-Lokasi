@@ -18,7 +18,7 @@ class APIKeyMiddleware {
             ], 401);
         }
 
-        if ($apiKey !== config('services.iae.allowed_key')) {
+        if ((string) $apiKey !== (string) config('services.iae.allowed_key')) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Forbidden: Invalid X-IAE-KEY',
